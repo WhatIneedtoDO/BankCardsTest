@@ -21,6 +21,8 @@ security:
   jwt:
     secret: ${JWT_SECRET:secret} #TODO
     expiration-ms: 3600000
+    token-prefix: "Bearer "
+    header-string: "Authorization"
 
 app:
   crypto:
@@ -30,6 +32,10 @@ logging:
   level:
     root: INFO
     com.example.cardservice: DEBUG
+  file:
+    name: logs/card-service.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n"
 
 services:
   db:
